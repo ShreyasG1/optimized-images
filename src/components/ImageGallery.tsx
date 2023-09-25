@@ -1,38 +1,18 @@
-import React, { useLayoutEffect } from 'react';
+import React from 'react';
 import { ImagesContainer, Image, ImageWrapper } from './styledComponents';
 import { GALLERY_IMAGES } from '../constants/images';
+import useBlurLoader from '../hooks/useBlurLoader';
 
 const ImageGallery: React.FC = () => {
-  useLayoutEffect(() => {
-    const blurDivs = document.querySelectorAll('.blur-load');
-
-    blurDivs.forEach((div) => {
-      const img = div.querySelector('img');
-      const loaded = () => {
-        div.classList.add('loaded');
-      };
-      if (img?.complete) {
-        loaded();
-      } else {
-        img?.addEventListener('load', loaded);
-      }
-    });
-
-    return () => {
-      blurDivs.forEach((div) => {
-        const img = div.querySelector('img');
-        img?.removeEventListener('load', () => {});
-      });
-    };
-  }, []);
+  const { defaultWrapClass, containerRef } = useBlurLoader();
 
   return (
-    <ImagesContainer>
+    <ImagesContainer ref={containerRef}>
       {GALLERY_IMAGES.map(({ imgSrc, smallImgSrc }, index) => (
         <ImageWrapper
           key={`sample_ai_image_${index + 1}`}
           background={`url(${smallImgSrc})`}
-          className={'blur-load'}
+          className={defaultWrapClass}
         >
           <Image
             src={imgSrc}
