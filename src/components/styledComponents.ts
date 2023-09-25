@@ -7,9 +7,6 @@ export const ImagesContainer: React.FC = styled.div`
   @media screen and (max-width: 1200px) {
     grid-template-columns: 1fr;
   }
-  .blur-load.loaded > img {
-    opacity: 1;
-  }
 `;
 
 export const Image: React.FC = styled.img`
@@ -27,4 +24,7 @@ export const ImageWrapper: React.FC = styled.div`
   width: 100%;
   background-size: cover;
   background-position: center;
+  &.loaded > img {
+    opacity: 1;
+  }
 `;
