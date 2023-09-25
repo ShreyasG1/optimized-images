@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { background } from 'styled-system';
 
 export const ImagesContainer: React.FC = styled.div`
@@ -19,12 +19,37 @@ export const Image: React.FC = styled.img`
   transition: opacity 200ms ease-in-out;
 `;
 
+const pulsingLoader = keyframes`
+  0% {
+    background-color: rgba(255, 255, 255, 0);
+  }
+  50% {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0);
+  }
+`;
+
 export const ImageWrapper: React.FC = styled.div`
   ${background}
+  position: relative;
   width: 100%;
   background-size: cover;
   background-position: center;
-  &.loaded > img {
-    opacity: 1;
+  &:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    animation: ${pulsingLoader} 2.5s infinite;
+  }
+  &.loaded {
+    img {
+      opacity: 1;
+    }
+    &:before {
+      content: none;
+      animation: none;
+    }
   }
 `;
