@@ -1,7 +1,11 @@
 import styled, { keyframes } from 'styled-components';
 import { background } from 'styled-system';
 
-export const ImagesContainer: React.FC = styled.div`
+interface ImageWrapperProps {
+  background: string;
+}
+
+export const ImagesContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   @media screen and (max-width: 1200px) {
@@ -9,7 +13,7 @@ export const ImagesContainer: React.FC = styled.div`
   }
 `;
 
-export const Image: React.FC = styled.img`
+export const Image = styled.img`
   width: 100%;
   aspect-ratio: 16 / 9;
   display: block;
@@ -31,7 +35,7 @@ const pulsingLoader = keyframes`
   }
 `;
 
-export const ImageWrapper: React.FC = styled.div`
+export const ImageWrapper = styled.div<ImageWrapperProps>`
   ${background}
   position: relative;
   width: 100%;
