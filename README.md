@@ -5,7 +5,6 @@ This project is a React application built using Vite. It renders a grid of 10 im
 ## Technologies Used
 
 - React
-- Vite
 - TypeScript
 - Styled Components
 - Styled System
