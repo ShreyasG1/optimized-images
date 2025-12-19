@@ -18,5 +18,5 @@ To get started with this project, follow these steps:
 3. Run `npm install` to install dependencies.
 4. Run `npm run dev` to start the development server.
 
-## Demo video
+## Demo video (Good 3G network)
 https://github.com/user-attachments/assets/80abba62-cfae-4a3f-a1d2-1f451d5a97eb
